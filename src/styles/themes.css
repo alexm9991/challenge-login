@@ -1,0 +1,100 @@
+/* ☀️ Tema Claro */
+:root {
+    --background: oklch(0.985 0.05 10); /* Rosa pastel suave */
+    --foreground: oklch(0.18 0.02 310); /* Ciruela oscuro */
+    --card: oklch(0.98 0.04 20); /* Beige claro */
+    --card-foreground: oklch(0.25 0.05 330); /* Malva */
+    --popover: oklch(0.98 0.04 20); /* Beige claro */
+    --popover-foreground: oklch(0.25 0.05 330); /* Malva */
+    --primary: oklch(0.65 0.18 350); /* Rosa ciruela apagado */
+    --primary-foreground: oklch(0.98 0 0); /* Blanco puro */
+    --secondary: oklch(0.94 0.05 50); /* Durazno suave */
+    --secondary-foreground: oklch(0.25 0.05 330); /* Malva */
+    --muted: oklch(0.92 0.03 280); /* Lavanda pálido */
+    --muted-foreground: oklch(0.5 0.04 290); /* Lila oscuro */
+    --accent: oklch(0.92 0.03 280); /* Lavanda pálido */
+    --accent-foreground: oklch(0.25 0.05 330); /* Malva */
+    --destructive: oklch(0.7 0.3 20); /* Rojo coral */
+    --destructive-foreground: oklch(0.99 0 0); /* Blanco puro */
+    --input: oklch(0.92 0.02 350); /* Rosa grisáceo claro */
+    --input-foreground: oklch(0.24 0.02 345); /* Ciruela oscuro */
+    --input-border: oklch(0.75 0.12 350); /* Rosa lavanda tenue */
+    --input-placeholder: oklch(0.6 0.08 345); /* Rosa apagado */
+    --input-ring: oklch(0.65 0.18 350); /* Rosa ciruela apagado */
+    --input-focus: oklch(0.75 0.18 350); /* Rosa ciruela vibrante */
+    --input-focus-border: oklch(0.65 0.15 350); /* Rosa lavanda */
+    --input-focus-ring: oklch(0.85 0.18 350 / 0.4); /* Rosa ciruela translúcido */
+    --border: oklch(0.95 0.02 300); /* Rosa empolvado */
+    --input: oklch(0.95 0.02 300); /* Rosa empolvado */
+    --ring: oklch(0.88 0.05 290); /* Lavanda */
+    --chart-1: oklch(0.75 0.2 60); /* Amarillo dorado */
+    --chart-2: oklch(0.7 0.15 180); /* Verde agua */
+    --chart-3: oklch(0.6 0.1 250); /* Azul lavanda */
+    --chart-4: oklch(0.85 0.18 90); /* Verde lima pastel */
+    --chart-5: oklch(0.8 0.17 80); /* Verde oliva claro */
+    --radius: 0.625rem;
+    --sidebar: oklch(0.99 0 0); /* Blanco puro */
+    --sidebar-foreground: oklch(0.18 0.02 310); /* Ciruela oscuro */
+    --sidebar-primary: oklch(0.85 0.15 350); /* Rosa intenso */
+    --sidebar-primary-foreground: oklch(0.99 0 0); /* Blanco puro */
+    --sidebar-accent: oklch(0.94 0.05 50); /* Durazno suave */
+    --sidebar-accent-foreground: oklch(0.25 0.05 330); /* Malva */
+    --sidebar-border: oklch(0.95 0.02 300); /* Rosa empolvado */
+}  
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: oklch(0.15 0.03 310); /* Ciruela profundo */
+      --foreground: #ededed;
+    }
+  }
+  
+  body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+/* 🌙 Tema Oscuro */
+.dark {
+    --background: oklch(0.18 0.02 310); /* Ciruela oscuro */
+    --foreground: oklch(0.98 0.04 20); /* Beige claro */
+    --card: oklch(0.2 0.04 320); /* Uva profundo */
+    --card-foreground: oklch(0.98 0.04 20); /* Beige claro */
+    --popover: oklch(0.2 0.04 320); /* Uva profundo */
+    --popover-foreground: oklch(0.98 0.04 20); /* Beige claro */
+    --primary: oklch(0.55 0.15 335); /* Rosa malva tenue */
+    --primary-foreground: oklch(0.96 0.03 345); /* Rosa pastel muy claro */
+    --secondary: oklch(0.3 0.05 290); /* Lavanda profundo */
+    --secondary-foreground: oklch(0.98 0.04 20); /* Beige claro */
+    --muted: oklch(0.3 0.05 290); /* Lavanda profundo */
+    --muted-foreground: oklch(0.7 0.05 300); /* Rosa viejo */
+    --accent: oklch(0.3 0.05 290); /* Lavanda profundo */
+    --accent-foreground: oklch(0.98 0.04 20); /* Beige claro */
+    --destructive: oklch(0.5 0.3 15); /* Rojo oscuro */
+    --destructive-foreground: oklch(0.98 0.04 20); /* Beige claro */
+    --border: oklch(0.3 0.05 290); /* Lavanda profundo */
+    --input: oklch(0.24 0.02 340); /* Vino suave oscuro */
+    --input-foreground: oklch(0.95 0.02 350); /* Rosa pastel claro */
+    --input-border: oklch(0.45 0.15 340); /* Ciruela oscuro */
+    --input-placeholder: oklch(0.6 0.08 345); /* Rosa apagado */
+    --input-ring: oklch(0.75 0.18 350); /* Rosa ciruela más vibrante */
+    --input-focus: oklch(0.45 0.15 340); /* Ciruela oscuro */
+    --input-focus-border: oklch(0.55 0.12 345); /* Lavanda suave */
+    --input-focus-ring: oklch(0.75 0.18 350 / 0.4); /* Rosa ciruela translúcido */
+    --ring: oklch(0.5 0.06 310); /* Violeta oscuro */
+    --chart-1: oklch(0.6 0.25 260); /* Azul índigo */
+    --chart-2: oklch(0.7 0.2 140); /* Verde esmeralda */
+    --chart-3: oklch(0.8 0.22 50); /* Amarillo cálido */
+    --chart-4: oklch(0.5 0.3 320); /* Púrpura oscuro */
+    --chart-5: oklch(0.55 0.26 10); /* Rojo borgoña */
+    --sidebar: oklch(0.85 0.2 340); /* Fucsia */
+    --sidebar-foreground: oklch(0.98 0.04 20); /* Beige claro */
+    --sidebar-primary: oklch(0.6 0.25 260); /* Azul índigo */
+    --sidebar-primary-foreground: oklch(0.98 0.04 20); /* Beige claro */
+    --sidebar-accent: oklch(0.3 0.05 290); /* Lavanda profundo */
+    --sidebar-accent-foreground: oklch(0.98 0.04 20); /* Beige claro */
+    --sidebar-border: oklch(0.3 0.05 290); /* Lavanda profundo */
+    --sidebar-ring: oklch(0.5 0.06 310); /* Violeta oscuro */
+  }
+  
