@@ -1,7 +1,7 @@
-import { LoginView } from "@/components/home/login"
+import { LoginView } from "@components/login"
 
-const Home = () => {
+const Login = () => {
   return (<LoginView />);
 };
 
-export default Home;
+export default Login;
