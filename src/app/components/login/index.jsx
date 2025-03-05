@@ -1,4 +1,10 @@
+// Utils
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { LoginSchema } from "@/lib/schemas/login-schema";
+
 // Components
+import Link from "next/link";
 import {
   Card,
   CardHeader,
@@ -7,14 +13,30 @@ import {
   CardDescription,
   CardContent,
 } from "@ui/card";
-import { Label } from "@ui/label";
 import { Input } from "@ui/input";
 import { Button } from "@ui/button";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/app/ui/form";
 
 // Icons
 import { UserPlus } from "lucide-react";
 
 export const LoginView = () => {
+  const form = useForm({
+    resolver: yupResolver(LoginSchema),
+  });
+
+  const { control, handleSubmit, formState } = form;
+  const { isLoading } = formState;
+
+  const onSubmit = (data) => {};
+
   return (
     <section className="flex items-center justify-center h-screen">
       <Card className="max-w-sm mx-8">
@@ -26,29 +48,56 @@ export const LoginView = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Correo electrónico</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="usuario@dominio.com"
-                required
+          <Form {...form}>
+            <form
+              id="login-form"
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-4"
+            >
+              <FormField
+                className="space-y-2"
+                control={control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Correo electrónico</FormLabel>
+                    <FormControl>
+                      <Input placeholder="usuario@dominio.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Contraseña</Label>
-              <Input id="password" type="password" required />
-            </div>
-            <Button type="submit" className="w-full">
-              Iniciar sesión
-            </Button>
-          </div>
+              <FormField
+                className="space-y-2"
+                control={control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Contraseña</FormLabel>
+                    <FormControl>
+                      <Input type="password" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button
+                disabled={isLoading}
+                form="login-form"
+                type="submit"
+                className="w-full"
+              >
+                Iniciar Sesión
+              </Button>
+            </form>
+          </Form>
         </CardContent>
-
         <CardFooter>
-          <Button variant="secondary" className="w-full">
-            <UserPlus /> Crear cuenta nueva
+          <Button asChild variant="secondary" className="w-full">
+            <Link href="/create-account">
+              <UserPlus /> Crear cuenta nueva
+            </Link>
           </Button>
         </CardFooter>
       </Card>
