@@ -1,7 +1,10 @@
 // Utils
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { UserCreateSchema, defaultValues } from "@/lib/schemas/user-register-schema";
+import {
+  UserCreateSchema,
+  defaultValues,
+} from "@/lib/schemas/user-register-schema";
 
 // Components
 import { Input } from "@ui/input";
@@ -83,7 +86,7 @@ export const CreateAccountView = () => {
                   <FormItem>
                     <FormLabel>Contraseña</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input type="password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -99,7 +102,7 @@ export const CreateAccountView = () => {
                   <FormItem>
                     <FormLabel>Confirmar contraseña</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input type="password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
