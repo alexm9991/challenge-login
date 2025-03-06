@@ -21,6 +21,8 @@ const schema = yup.object().shape({
 
 const defaultValues = {
   email: "user@lucasian.com",
+  password: "Al$12345",
+  confirmPassword:  "Al$12345",
 };
 
 export { schema as UserCreateSchema, defaultValues };
