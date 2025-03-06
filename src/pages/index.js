@@ -1,7 +1,9 @@
-import { LoginView } from "@components/login"
+import { authRedirect } from "@/lib/middlewares";
 
-const Login = () => {
-  return (<LoginView />);
-};
+export async function getServerSideProps({ req }) {
+  return authRedirect(req);
+}
 
-export default Login;
+export default function HomePage() {
+  return <h1>Welcome to Home</h1>;
+}
