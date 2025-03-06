@@ -1,10 +1,15 @@
 // Utils
-import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   UserCreateSchema,
   defaultValues,
 } from "@/lib/schemas/user-register-schema";
+
+// Hooks
+import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import useRegisterUser from "@hooks/requests/useRegisterUser";
 
 // Components
 import { Input } from "@ui/input";
@@ -31,6 +36,9 @@ import {
 import { UserPlus } from "lucide-react";
 
 export const CreateAccountView = () => {
+  const { fetch, loading } = useRegisterUser();
+  const router = useRouter();
+
   const form = useForm({
     mode: "onChange",
     resolver: yupResolver(UserCreateSchema),
@@ -40,9 +48,24 @@ export const CreateAccountView = () => {
   const { control, handleSubmit, formState } = form;
   const { isValid, isDirty, isLoading } = formState;
 
-  const onSubmit = (data) => {
-    console.log("data", data);
-    // TODO: fetch create user
+  const onSubmit = async (data) => {
+    try {
+      const isUserCreated = await fetch(data);
+
+      if (isUserCreated) {
+        toast.success("Usuario creado!", {
+          description: "Redirigiendo al login en 3 segundos ...",
+        });
+
+        setTimeout(() => {
+          router.push("/");
+        }, 3000);
+      } else {
+        toast.error("Error creando el usuario");
+      }
+    } catch (error) {
+      toast.error("Error creando el usuario");
+    }
   };
 
   return (
@@ -114,7 +137,7 @@ export const CreateAccountView = () => {
 
         <CardFooter>
           <Button
-            disabled={!isDirty || !isValid || isLoading}
+            disabled={!isDirty || !isValid || isLoading || loading}
             form="create-account-form"
             type="submit"
             className="w-full"
