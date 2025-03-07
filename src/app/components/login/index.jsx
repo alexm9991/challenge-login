@@ -1,7 +1,12 @@
 // Utils
+import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema } from "@/lib/schemas/login-schema";
+
+// Hooks
+import { useRouter } from "next/router";
+import useLogin from "@/app/hooks/requests/useLogin";
 
 // Components
 import Link from "next/link";
@@ -28,6 +33,8 @@ import {
 import { UserPlus } from "lucide-react";
 
 export const LoginView = () => {
+  const router = useRouter();
+  const { fetch, loading } = useLogin();
   const form = useForm({
     resolver: yupResolver(LoginSchema),
   });
@@ -35,7 +42,16 @@ export const LoginView = () => {
   const { control, handleSubmit, formState } = form;
   const { isLoading } = formState;
 
-  const onSubmit = (data) => {};
+  const onSubmit = async (data) => {
+    try {
+      await fetch(data);
+      router.push("/");
+    } catch (error) {
+      console.log("error", error);
+
+      toast.error("Error contraseña o correo electronico invalidos");
+    }
+  };
 
   return (
     <section className="flex items-center justify-center h-screen">
@@ -49,11 +65,7 @@ export const LoginView = () => {
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form
-              id="login-form"
-              onSubmit={handleSubmit(onSubmit)}
-              className="space-y-4"
-            >
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <FormField
                 className="space-y-2"
                 control={control}
@@ -83,8 +95,7 @@ export const LoginView = () => {
                 )}
               />
               <Button
-                disabled={isLoading}
-                form="login-form"
+                disabled={isLoading || loading}
                 type="submit"
                 className="w-full"
               >
