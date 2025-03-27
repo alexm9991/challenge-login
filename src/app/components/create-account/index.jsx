@@ -13,6 +13,7 @@ import useRegisterUser from "@hooks/requests/useRegisterUser";
 
 // Components
 import { Input } from "@ui/input";
+import Link from "next/link";
 import { Button } from "@ui/button";
 import {
   Card,
@@ -135,7 +136,7 @@ export const CreateAccountView = () => {
           </Form>
         </CardContent>
 
-        <CardFooter>
+        <CardFooter className="flex flex-col gap-2">
           <Button
             disabled={!isDirty || !isValid || isLoading || loading}
             form="create-account-form"
@@ -143,6 +144,9 @@ export const CreateAccountView = () => {
             className="w-full"
           >
             <UserPlus /> Crear cuenta nueva
+          </Button>
+          <Button variant="link" asChild>
+            <Link href="/login">¿Ya tienes una cuenta? Iniciar Sesión</Link>
           </Button>
         </CardFooter>
       </Card>
