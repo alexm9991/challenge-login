@@ -1,3 +1,7 @@
+// Utils
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+
 // Components
 import { Button } from "@/app/ui/button";
 import {
@@ -11,9 +15,23 @@ import {
 // Icons
 import { HomeIcon, LogOutIcon } from "lucide-react";
 
-const handleLogout = () => {};
+//Hooks
+import useLogout from "@/app/hooks/requests/useLogout";
 
 export const HomeView = () => {
+  const router = useRouter();
+  const { fetch: logout, loading } = useLogout();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      router.push("/login");
+    } catch (error) {
+      console.log("Error al cerrar sesión", error);
+      toast.error("No se pudo cerrar sesión");
+    }
+  };
+
   return (
     <section className="flex items-center justify-center h-screen">
       <Card className="max-w-sm px-4">

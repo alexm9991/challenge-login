@@ -10,8 +10,7 @@ export default function useLogin() {
       body: JSON.stringify(payload),
     });
 
-    console.log('error',error);
-    
+    console.log("error", error);
 
     if (error) throw new Error("Error de autenticacion");
 
