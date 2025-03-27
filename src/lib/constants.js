@@ -4,6 +4,7 @@ const API_PATHS = {
   AUTH: {
     USER_REGISTER: `${API_URL}/auth/user-register`,
     LOGIN: `${API_URL}/auth/login`,
+    LOGOUT: `${API_URL}/auth/logout`,
   },
 };
 
